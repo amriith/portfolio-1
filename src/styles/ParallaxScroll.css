@@ -1,0 +1,29 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Arial", sans-serif;
+    background-color: #000;
+  }
+  
+  .wrapper {
+    position: relative;
+  }
+  
+  .parallax-svg {
+    display: block;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0;
+  }
+  
+  .scrollElement {
+    position: absolute;
+    height: 6000px;
+    width: 100%;
+    top: 0;
+    z-index: 4;
+  }
+  
