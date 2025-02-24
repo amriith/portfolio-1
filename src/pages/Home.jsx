@@ -1,16 +1,20 @@
 import { TypeAnimation } from "react-type-animation";
+import { Appbar } from "../components/Appbar";
+import { WorkExperience } from "../components/WorkExperience";
 
 export default function Home() {
   return (
+    <> 
+    <Appbar/>
     <div className="flex-auto grid grid-cols-2 h-screen">
 
-      <div className="flex flex-col items-center justify-center text-white">
+      <div className="flex flex-col h-200 items-center justify-center text-white">
 
-        <div className=" grid-cols-2 backdrop-blur-lg p-6 text-2xl text-center">
+        <div className=" grid-cols-2 backdrop-blur-lg text-2xl text-center">
           
-        <div className="flex justify-center py-5" >
+        <div className="flex justify-center pb-4" >
             <img
-              className="w-20 h-20 rounded-full"
+              className="w-40 h-40 rounded-full"
               src="src/images/avatar.jpg"
               alt="Rounded avatar"
             />
@@ -22,8 +26,39 @@ export default function Home() {
         <ChangingTexts />
       </div>
 
-      <div className=""></div>
+      <div className="text-slate-400 text-lg pt-10">
+  <p className="mb-6">
+    Experienced Software Developer with a strong foundation in full-stack development, specializing in building 
+    scalable, high-performance web applications with a focus on backend architecture and system functionality. 
+    Currently, I am pursuing a Master’s in Information Technology at Deakin University, Melbourne. Beyond academics, 
+    I have been freelancing, developing websites for local businesses, and building my own e-commerce platform, 
+    <a href="https://mriid.com" className="text-bold text-white"> MRIID</a>, where I handle everything from backend 
+    architecture to deployment. Previously, I worked as an Associate Software Engineer at 
+    <a href="https://www.oneadvanced.com/" className="text-bold text-white"> OneAdvanced</a>, contributing to 
+    large-scale enterprise applications.
+  </p>
+
+  <p className="mb-6">
+    While I have experience across the stack, I find backend development particularly fascinating. Designing
+    APIs, optimizing databases, and creating seamless integrations excites me more than UI design. I enjoy solving 
+    complex problems and implementing scalable solutions. There is no better feeling 
+    than overcoming a challenging bug or finally deploying a feature that I struggled with for days.
+  </p>
+
+  <p className="mb-20">
+    I am quietly confident, naturally curious, and always looking for ways to improve my skills. Beyond coding, I’m 
+    passionate about reading, hiking, cycling, working out, and practicing martial arts. I believe discipline and 
+    perseverance, both in physical training and software development, go hand in hand in shaping my approach to 
+    challenges—whether in technology or life.
+  </p>
+
+
+      <WorkExperience companyName={"OneAdvanced"} year={"Jan 2022- August 2023"} link={"https://www.oneadvanced.com/"}/>
+      <WorkExperience/>
+     
+      </div>
     </div>
+    </>
   );
 }
 

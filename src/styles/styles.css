@@ -1,0 +1,69 @@
+div.borderYtoX {
+    display: flex;
+    gap: 20px;
+    position: relative;
+}
+
+div.borderYtoX a {
+    position: relative;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    padding: 10px 20px;
+    transition: background 0.3s ease-in-out;
+    overflow: hidden;
+}
+
+/* Invisible by default */
+div.borderYtoX a:before,
+div.borderYtoX a:after {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+    content: '';
+    background: #FFF;
+    transition: all 0.3s ease-in-out;
+}
+
+div.borderYtoX a:before {
+    left: 0;
+    top: 0;
+}
+
+div.borderYtoX a:after {
+    right: 0;
+    bottom: 0;
+}
+
+/* Background Flashing Effect (Auto-Fades) */
+div.borderYtoX a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    animation: fadeOut 2s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        background: rgba(255, 255, 255, 0.2);
+    }
+    100% {
+        background: transparent;
+    }
+}
+
+/* Border Lines on Hover */
+div.borderYtoX a:hover:before,
+div.borderYtoX a:hover:after {
+    opacity: 1;
+    height: 2px;
+    width: 100%;
+}
+
+/* Fade the border back after 2s */
+div.borderYtoX a:not(:hover):before,
+div.borderYtoX a:not(:hover):after {
+    opacity: 0;
+    height: 0;
+    width: 0;
+    transition: all 2s ease-in-out;
+}
