@@ -41,20 +41,37 @@ export default function Home() {
   <p className="mb-6">
     While I have experience across the stack, I find backend development particularly fascinating. Designing
     APIs, optimizing databases, and creating seamless integrations excites me more than UI design. I enjoy solving 
-    complex problems and implementing scalable solutions. There is no better feeling 
-    than overcoming a challenging bug or finally deploying a feature that I struggled with for days.
+    complex problems and implementing scalable solutions.
   </p>
 
   <p className="mb-20">
-    I am quietly confident, naturally curious, and always looking for ways to improve my skills. Beyond coding, I’m 
+  Beyond coding, I’m 
     passionate about reading, hiking, cycling, working out, and practicing martial arts. I believe discipline and 
     perseverance, both in physical training and software development, go hand in hand in shaping my approach to 
     challenges—whether in technology or life.
   </p>
 
 
-      <WorkExperience companyName={"OneAdvanced"} year={"Jan 2022- August 2023"} link={"https://www.oneadvanced.com/"}/>
+      <WorkExperience companyName={"OneAdvanced"} year={"Jan 2022- August 2023"} link={"https://www.oneadvanced.com/"} description={<> Contributed to the development of <a href="https://www.oneadvanced.com/products/clinical-patient-management/" className="text-white text-bold"> Adastra </a>, a .NET/C# desktop application for NHS UK, enhancing patient management and streamlining urgent and unscheduled care interactions.Developed and maintained the patient booking slot availability and doctor appointment system API, utilizing REST API design, development, and integration to enhance data retrieval efficiency.
+        Contributed to the development of the emergency booking and referral service endpoint within the BaRS API Gateway for Adastra
+        Conducted API testing and validation using Postman, improving the robustness of API interactions and debugging workflows.
+      <br /><br />
+
+       Designed and implemented various sub-features, including:
+      
+        Book Appointment, Emergency Ambulance Enabled rapid ambulance dispatch functionality through the API.
+        Cancel Referral, Additional Features Built enhancements to improve API performance and data accuracy.
+      
+      <br />
+
+     Collaborated closely with product managers, designers, and engineers to refine API workflows, optimize performance, and ensure compliance with healthcare standards.
+     
+      </>  }
+      techStack={"C#"}  />
       <WorkExperience/>
+      <WorkExperience>
+
+      </WorkExperience>
      
       </div>
     </div>
