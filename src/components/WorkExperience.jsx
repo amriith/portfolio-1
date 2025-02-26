@@ -21,7 +21,13 @@ export const WorkExperience = ({ companyName, year, description, techStack, link
         <p className="mt-2 text-md text-gray-400">{description}</p>
   
         {/* Tech Stack */}
-        <div className="px-2 py-1.5 text-xs  w-8 font-semibold text-gray-800 bg-gray-100 border border-gray-200 rounded-lg dark:bg-gray-600 dark:text-gray-100 dark:border-gray-500"> {techStack}</div>
+        <div className="flex flex-wrap gap-2 mt-4">
+        {techStack?.map((techStack, index) => (
+          <span key={index} className="px-2 py-1 text-sm bg-gray-800 text-white rounded-md">
+            {techStack}
+          </span>
+        ))}
+      </div>
       </div>
     );
   };

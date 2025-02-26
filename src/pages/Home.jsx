@@ -67,7 +67,7 @@ export default function Home() {
      Collaborated closely with product managers, designers, and engineers to refine API workflows, optimize performance, and ensure compliance with healthcare standards.
      
       </>  }
-      techStack={"C#"}  />
+     techStack={["C#","HTML & CSS", ".NET", "Postman", "Angular", "Reddis"]}      />
       <WorkExperience/>
       <WorkExperience>
 
