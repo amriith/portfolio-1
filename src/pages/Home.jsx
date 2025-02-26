@@ -26,7 +26,7 @@ export default function Home() {
         <ChangingTexts />
       </div>
 
-      <div className="text-slate-400 text-lg pt-10">
+      <div className="text-slate-400 text-md pt-10">
   <p className="mb-6">
     Experienced Software Developer with a strong foundation in full-stack development, specializing in building 
     scalable, high-performance web applications with a focus on backend architecture and system functionality. 
@@ -52,23 +52,16 @@ export default function Home() {
   </p>
 
 
-      <WorkExperience companyName={"OneAdvanced"} year={"Jan 2022- August 2023"} link={"https://www.oneadvanced.com/"} description={<> Contributed to the development of <a href="https://www.oneadvanced.com/products/clinical-patient-management/" className="text-white text-bold"> Adastra </a>, a .NET/C# desktop application for NHS UK, enhancing patient management and streamlining urgent and unscheduled care interactions.Developed and maintained the patient booking slot availability and doctor appointment system API, utilizing REST API design, development, and integration to enhance data retrieval efficiency.
-        Contributed to the development of the emergency booking and referral service endpoint within the BaRS API Gateway for Adastra
-        Conducted API testing and validation using Postman, improving the robustness of API interactions and debugging workflows.
-      <br /><br />
-
-       Designed and implemented various sub-features, including:
-      
-        Book Appointment, Emergency Ambulance Enabled rapid ambulance dispatch functionality through the API.
-        Cancel Referral, Additional Features Built enhancements to improve API performance and data accuracy.
-      
-      <br />
-
-     Collaborated closely with product managers, designers, and engineers to refine API workflows, optimize performance, and ensure compliance with healthcare standards.
-     
-      </>  }
+      <WorkExperience companyName={"OneAdvanced"} year={"Jan 2022- August 2023"} link={"https://www.oneadvanced.com/"} description={<> Developed Adastra, a .NET/C# app for NHS UK, improving patient management.
+Built & maintained doctor appointment APIs, streamlining scheduling & availability.
+<br/>Contributed to the BaRS API Gateway, enabling emergency referral services.
+Enhanced API performance & debugging using Postman & REST API best practices.
+Implemented key features: ambulance dispatch, appointment booking, referral cancellations.
+Collaborated with product managers & engineers, ensuring compliance & efficiency.</>  }
      techStack={["C#","HTML & CSS", ".NET", "Postman", "Angular", "Reddis"]}      />
-      <WorkExperience/>
+      <WorkExperience companyName={"Thoth Tech"} year={"Aug 2024 - Feb 2025"} link={"https://internal-systems.vercel.app/"}  description={<> 
+      Worked on 
+      </>} />
       <WorkExperience>
 
       </WorkExperience>

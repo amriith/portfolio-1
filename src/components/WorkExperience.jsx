@@ -18,7 +18,7 @@ export const WorkExperience = ({ companyName, year, description, techStack, link
         </a>
   
         {/* Description */}
-        <p className="mt-2 text-md text-gray-400">{description}</p>
+        <p className="mt-2 text-sm text-gray-400">{description}</p>
   
         {/* Tech Stack */}
         <div className="flex flex-wrap gap-2 mt-4">
