@@ -1,6 +1,6 @@
 export const WorkExperience = ({ companyName, year, description, techStack, link }) => {
     return (
-      <div className="relative   w-full max-w-3xl mx-auto p-6 bg-gray-900 rounded-xl shadow-md border border-gray-800 transition hover:bg-gray-800">
+      <div className="relative  mt-5 w-full max-w-3xl mx-auto p-6 bg-gray-900 rounded-xl shadow-md border border-gray-800 transition hover:bg-gray-800">
         {/* Year */}
         <div className="text-xs flex justify-between uppercase font-semibold tracking-wide text-slate-500">
           {year}
