@@ -52,24 +52,24 @@ export default function Home() {
   </p>
 
 
-      <WorkExperience companyName={"OneAdvanced"} year={"Jan 2022- August 2023"} link={"https://www.oneadvanced.com/"} description={<> Developed Adastra, a .NET/C# app for NHS UK, improving patient management.
+      <WorkExperience companyName={"OneAdvanced  ↗"} year={"Jan 2022- August 2023"} link={"https://www.oneadvanced.com/"} description={<> Developed Adastra, a .NET/C# app for NHS UK, improving patient management.
 Built & maintained doctor appointment APIs, streamlining scheduling & availability.
 <br/>Contributed to the BaRS API Gateway, enabling emergency referral services.
 Enhanced API performance & debugging using Postman & REST API best practices.
 Implemented key features: ambulance dispatch, appointment booking, referral cancellations.
 Collaborated with product managers & engineers, ensuring compliance & efficiency.</>  }
-     techStack={["C#","HTML & CSS", ".NET", "Postman", "Angular", "Reddis"]}      />
-      <WorkExperience companyName={"Thoth Tech"} year={"Aug 2024 - Feb 2025"} link={"https://internal-systems.vercel.app/"}  description={<> 
+     techStack={["C#","HTML & CSS", ".NET", "Postman", "Angular", "Reddis", "Microsoft SQL"]}      />
+      <WorkExperience companyName={"Thoth Tech  ↗"} year={"Aug 2024 - Feb 2025"} link={"https://internal-systems.vercel.app/"}  description={<> 
         Contributed to OnTrack, an educational platform used by major Australian universities, enhancing the student learning experience through backend and frontend improvements.
          Led the migration of legacy code from CoffeeScript to TypeScript, modernizing the platform for better performance and maintainability. Designed user-centric interfaces, improving student engagement and user journeys.
           Developed a customizable email notification system based on user research to optimize interactions.
          Implemented Docker containers, streamlining development and deployment processes.
-      </>} techStack={["TypeScript", "Ruby on Rails", "HTML & CSS", "Docker"]} />
+      </>} techStack={["TypeScript", "Ruby on Rails", "HTML & CSS", "Docker", "Postgre SQL"]} />
 
       <WorkExperience companyName={"Freelance Software Developer"} year={"2022 – Present"} description={<> Designed and implemented cloud-based solutions for healthcare providers and small businesses, optimizing performance and scalability. 
         Built microservices-based applications using React and Node.js.
         Deployed applications using Docker and cloud services like AWS & Azure, enabling efficient hosting and scaling.
-         Integrated secure payment gateways with Stripe.</>} techStack={["React", "Node.js", "Docker", "AWS" , "Azure" , "Stripe", "JavaScript", "TypeScript"]} />
+         Integrated secure payment gateways with Stripe.</>} techStack={["React", "Node.js", "Docker", "AWS" , "Azure" , "Stripe", "JavaScript", "TypeScript", "Postgre SQL","Mongo DB", "Prisma ORM"]} />
 
       
      

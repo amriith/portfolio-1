@@ -14,7 +14,7 @@ export const WorkExperience = ({ companyName, year, description, techStack, link
           className="text-xl font-semibold text-teal-400 hover:underline flex items-center gap-2"
         >
           {companyName}
-          <span>↗</span>
+          
         </a>
   
         {/* Description */}
