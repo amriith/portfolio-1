@@ -15,7 +15,7 @@ export default function Home() {
         <div className="flex justify-center pb-4" >
             <img
               className="w-40 h-40 rounded-full"
-              src="src/images/avatar.jpg"
+              src="/avatar.jpg"
               alt="Rounded avatar"
             />
           </div>
@@ -84,7 +84,7 @@ export function ChangingTexts() {
     <div className="text-center text-white text-2xl mt-4">
       <TypeAnimation
         sequence={[
-          "I'm a Web Developer",
+          "I'm a Human Being",
           2000,
           "I'm a Geek",
           2000,
