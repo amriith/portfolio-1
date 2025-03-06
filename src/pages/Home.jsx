@@ -4,81 +4,50 @@ import { WorkExperienceSection } from '../components/WorkExperience';
 import { useEffect } from "react";
 
 export default function Home() {
-  // We'll modify the scroll handler to work with GSAP
-  const handleScroll = (e) => {
-    const contentDiv = document.getElementById('scrollable-content');
-    if (contentDiv) {
-      // Let scrolling events pass through naturally for the work experience section
-      // Only prevent default for other parts if needed
-      const isWorkExperienceVisible = e.target.closest('.work-experience-container');
-      
-      if (!isWorkExperienceVisible) {
-        contentDiv.scrollTop += e.deltaY;
-        e.preventDefault();
-      }
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener('wheel', handleScroll, { passive: false });
-    
-    return () => {
-      window.removeEventListener('wheel', handleScroll);
-    };
-  }, []);
-
   return (
     <div className="flex flex-col h-screen overflow-hidden">
       <Appbar />
-      <div className="flex-1 grid grid-cols-2 overflow-hidden">
-     
-        <div className="relative flex items-center justify-center">
-       
-          <div className="absolute text-center text-white">
-            <div className="backdrop-blur-lg text-2xl">
-              <div className="flex justify-center pb-4">
-                <img
-                  className="w-40 h-40 rounded-full"
-                  src="/avatar.jpg"
-                  alt="Rounded avatar"
-                />
-              </div>
-              <div>Hello I'm Amrith Jayadeep 👋</div>
-            </div>
-            <div className="mt-8">
-              <ChangingTexts />
-            </div>
-          </div>
+
+      {/* 🛠️ Fixed: Use flex-col on mobile, grid on large screens */}
+      <div className="flex-1 flex flex-col sm:grid sm:grid-cols-2 gap-8 p-4 sm:p-8 overflow-hidden">
+        
+        {/* 🏆 Left Section: Profile & Animated Text (No Absolute Positioning) */}
+        <div className="flex flex-col items-center text-white text-center">
+          <img
+            className="w-32 h-32 sm:w-40 sm:h-40 rounded-full"
+            src="/avatar.jpg"
+            alt="Rounded avatar"
+          />
+          <h1 className="mt-4 text-2xl sm:text-3xl font-semibold">
+            Hello, I'm Amrith Jayadeep 👋
+          </h1>
+          <ChangingTexts />
         </div>
 
-        <div 
-          id="scrollable-content"
-          className="text-slate-400 text-md pt-10 pb-20 overflow-y-auto max-h-screen pr-4"
-        >
+        {/* 📜 Right Section: About + Work Experience */}
+        <div id="scrollable-content" className="text-slate-400 text-lg overflow-y-auto">
           <p className="mb-6">
-            Experienced Software Developer with a strong foundation in full-stack development, specializing in building 
-            scalable, high-performance web applications with a focus on backend architecture and system functionality. 
-            Currently, I am pursuing a Master's in Information Technology at Deakin University, Melbourne. Beyond academics, 
-            I have been freelancing, developing websites for local businesses, and building my own e-commerce platform, 
+         I'm a software engineer with a passion for crafting efficient, 
+          high-performance web applications featuring eye-catching interfaces. 
+          I leverage the latest tech stacks to design scalable and robust solutions that stand out. 
+          Currently pursuing  Master's in Information Technology with a specialization in Cloud Technology and Networking at Deakin University, 
+          I’m continually exploring cutting-edge methods to optimize web applications using cloud innovations.
+          </p>
+          <p className="mb-10"> My experience spans freelancing for local businesses, where I've developed tailored websites, and building my own comprehensive e-commerce platform, 
             <a href="https://mriid.com" className="text-bold text-white"> MRIID</a>, where I handle everything from backend 
             architecture to deployment. Previously, I worked as an Associate Software Engineer at 
             <a href="https://www.oneadvanced.com/" className="text-bold text-white"> OneAdvanced</a>, contributing to 
             large-scale enterprise applications.
           </p>
 
-          <p className="mb-6">
-            While I have experience across the stack, I find backend development particularly fascinating. Designing
-            APIs, optimizing databases, and creating seamless integrations excites me more than UI design. I enjoy solving 
-            complex problems and implementing scalable solutions.
+          
+
+          <p className="mb-10">
+            Passionate about problem-solving, system design, and building high-performance applications. 
+            Outside coding, I enjoy reading, hiking, cycling, and martial arts.
           </p>
 
-          <p className="mb-20">
-            Beyond coding, I'm passionate about reading, hiking, cycling, working out, and practicing martial arts. I believe discipline and 
-            perseverance, both in physical training and software development, go hand in hand in shaping my approach to 
-            challenges—whether in technology or life.
-          </p>
-
-          <WorkExperienceSection/>
+          <WorkExperienceSection />
         </div>
       </div>
     </div>
@@ -87,7 +56,7 @@ export default function Home() {
 
 export function ChangingTexts() {
   return (
-    <div className="text-center text-white text-2xl">
+    <div className="text-center text-white text-xl sm:text-2xl mt-4">
       <TypeAnimation
         sequence={[
           "I'm a Human Being",

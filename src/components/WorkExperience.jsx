@@ -34,8 +34,8 @@ export const WorkExperienceCard = ({ companyName, year, description, techStack, 
   
       {/* Tech Stack */}
       <div className="flex flex-wrap gap-2 mt-4">
-        {techStack?.map((tech, index) => (
-          <span key={index} className="px-2 py-1 text-sm bg-gray-800 text-white rounded-md">
+        {techStack?.map((tech, idx) => (
+          <span key={idx} className="px-2 py-1 text-sm bg-gray-800 text-white rounded-md">
             {tech}
           </span>
         ))}
@@ -48,10 +48,8 @@ export const AnimatedWorkExperience = ({ experiences }) => {
   const containerRef = useRef(null);
   
   useEffect(() => {
-    // Get the scrollable container
-    const scrollContainer = document.getElementById('scrollable-content');
-    if (!scrollContainer) return;
-    
+    // Get the scrollable container (or fallback to window)
+    const scrollContainer = document.getElementById('scrollable-content') || window;
     const cards = document.querySelectorAll('.work-experience-card');
     
     // Set initial state for all cards
@@ -59,7 +57,15 @@ export const AnimatedWorkExperience = ({ experiences }) => {
     
     // Create ScrollTriggers for each card
     cards.forEach((card, index) => {
-      // Create a unique animation for each card
+      // Adjust trigger positions for the last card
+      let startPos = "top 80%";
+      let endPos = "top 40%";
+      if (index === cards.length - 1) {
+        startPos = "top 90%";
+        endPos = "bottom 40%";
+      }
+      
+      // Animate current card
       gsap.to(card, {
         y: 0,
         opacity: 1,
@@ -67,20 +73,20 @@ export const AnimatedWorkExperience = ({ experiences }) => {
         ease: "power2.out",
         scrollTrigger: {
           trigger: card,
-          scroller: scrollContainer, // This is the key change
-          start: "top 80%",
-          end: "top 40%",
+          scroller: scrollContainer,
+          start: startPos,
+          end: endPos,
           scrub: 1,
           toggleActions: "play none none reverse",
-          // markers: true, // Set to true for debugging
+          // markers: true, // Enable markers for debugging if needed
         }
       });
       
-      // Create animations for previous cards when current card comes into view
+      // Animate previous cards when current card comes into view
       if (index > 0) {
         const previousCards = Array.from(cards).slice(0, index);
-        previousCards.forEach((prevCard, prevIndex) => {
-          const yOffset = -100 * (index - prevIndex);
+        previousCards.forEach((prevCard) => {
+          const yOffset = -100 * (index - Array.from(cards).indexOf(prevCard));
           
           gsap.to(prevCard, {
             y: yOffset,
@@ -88,12 +94,12 @@ export const AnimatedWorkExperience = ({ experiences }) => {
             scale: 0.95,
             scrollTrigger: {
               trigger: card,
-              scroller: scrollContainer, // This is the key change
-              start: "top 80%",
-              end: "top 40%",
+              scroller: scrollContainer,
+              start: startPos,
+              end: endPos,
               scrub: 1,
               toggleActions: "play none none reverse",
-              // markers: true, // Set to true for debugging
+              // markers: true, // Enable markers for debugging if needed
             }
           });
         });
@@ -101,13 +107,14 @@ export const AnimatedWorkExperience = ({ experiences }) => {
     });
     
     return () => {
-      // Clean up all ScrollTriggers when component unmounts
+      // Clean up all ScrollTriggers when the component unmounts
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
 
   return (
-    <div ref={containerRef} className="work-experience-container relative">
+    // Added bottom padding (pb-32) to allow the last card to scroll fully into view
+    <div ref={containerRef} className="work-experience-container relative pb-32">
       {experiences.map((exp, index) => (
         <WorkExperienceCard
           key={index}
@@ -123,7 +130,6 @@ export const AnimatedWorkExperience = ({ experiences }) => {
   );
 };
 
-// Keep the data and export as before
 export const WorkExperienceSection = () => {
   const experienceData = [
     {
@@ -145,7 +151,7 @@ export const WorkExperienceSection = () => {
       year: "2022 – Present",
       link: "",
       description: "Designed and implemented cloud-based solutions for healthcare providers and small businesses, optimizing performance and scalability. Built microservices-based applications using React and Node.js. Deployed applications using Docker and cloud services like AWS & Azure, enabling efficient hosting and scaling. Integrated secure payment gateways with Stripe.",
-      techStack: ["React", "Node.js", "Docker", "AWS", "Azure", "Stripe", "JavaScript", "TypeScript", "Postgre SQL", "Mongo DB", "Prisma ORM"]
+      techStack: ["React", "Node.js","Next.js", "Docker", "AWS", "Azure", "Stripe", "JavaScript", "TypeScript", "Postgre SQL", "Mongo DB", "Prisma ORM"]
     }
   ];
 
