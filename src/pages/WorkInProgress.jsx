@@ -17,6 +17,7 @@ export default function ApologeticBow() {
             ease: "easeInOut"
           }}
         >
+          
           {/* Character */}
           <div className="relative">
             {/* Head */}

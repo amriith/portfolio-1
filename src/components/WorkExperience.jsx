@@ -11,7 +11,7 @@ export const WorkExperienceCard = ({ companyName, year, description, techStack, 
   return (
     <div 
       ref={cardRef}
-      className="work-experience-card w-full max-w-3xl mx-auto p-6 bg-gray-900 rounded-xl shadow-md border border-gray-800 mb-8 opacity-0"
+      className="work-experience-card w-full max-w-3xl mx-auto p-6 bg-gray-900 rounded-xl shadow-md border border-gray-800 mb-32 opacity-0"
       data-index={index}
     >
       {/* Year */}
@@ -57,51 +57,61 @@ export const AnimatedWorkExperience = ({ experiences }) => {
     
     // Create ScrollTriggers for each card
     cards.forEach((card, index) => {
-      // Adjust trigger positions for the last card
-      let startPos = "top 80%";
-      let endPos = "top 40%";
-      if (index === cards.length - 1) {
-        startPos = "top 90%";
-        endPos = "bottom 40%";
-      }
+      // Create a much longer scroll distance for each card
+      // This will make each card visible for longer while scrolling
+      const cardTrigger = {
+        trigger: card,
+        scroller: scrollContainer,
+        start: "top 80%", // Start animation when card top reaches 80% from top of viewport
+        end: "bottom 20%", // End animation when card bottom reaches 20% from top of viewport
+        scrub: 0.5, // Smooth scrubbing effect
+        toggleActions: "play none none reverse",
+        // markers: true, // Enable markers for debugging if needed
+      };
       
-      // Animate current card
+      // Animate current card to be visible
       gsap.to(card, {
         y: 0,
         opacity: 1,
         duration: 0.5,
         ease: "power2.out",
         scrollTrigger: {
-          trigger: card,
-          scroller: scrollContainer,
-          start: startPos,
-          end: endPos,
-          scrub: 1,
-          toggleActions: "play none none reverse",
-          // markers: true, // Enable markers for debugging if needed
+          ...cardTrigger,
+          // Keep card visible for longer by extending the end position
+          end: `bottom-=${window.innerHeight * 0.5}px top`,
         }
       });
       
-      // Animate previous cards when current card comes into view
-      if (index > 0) {
-        const previousCards = Array.from(cards).slice(0, index);
-        previousCards.forEach((prevCard) => {
-          const yOffset = -100 * (index - Array.from(cards).indexOf(prevCard));
-          
-          gsap.to(prevCard, {
-            y: yOffset,
-            opacity: 0.3,
-            scale: 0.95,
-            scrollTrigger: {
-              trigger: card,
-              scroller: scrollContainer,
-              start: startPos,
-              end: endPos,
-              scrub: 1,
-              toggleActions: "play none none reverse",
-              // markers: true, // Enable markers for debugging if needed
-            }
-          });
+      // Create a separate trigger for when to hide the card
+      // This will happen much later in the scroll, giving more time to view the card
+      if (index < cards.length - 1) { // Don't create for the last card
+        ScrollTrigger.create({
+          trigger: cards[index + 1],
+          scroller: scrollContainer,
+          start: "top 60%", // Start hiding previous card when next card reaches 60% from top
+          end: "top 40%", // Complete hiding by 40%
+          scrub: 0.5,
+          onEnter: () => {
+            // Animate the previous card out when the next card comes into view
+            gsap.to(card, {
+              y: -50,
+              opacity: 0,
+              scale: 0.95,
+              duration: 0.5,
+              ease: "power2.out"
+            });
+          },
+          onLeaveBack: () => {
+            // Bring the card back when scrolling back up
+            gsap.to(card, {
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              duration: 0.5,
+              ease: "power2.out"
+            });
+          },
+          // markers: true, // Enable markers for debugging if needed
         });
       }
     });
@@ -113,19 +123,33 @@ export const AnimatedWorkExperience = ({ experiences }) => {
   }, []);
 
   return (
-    // Added bottom padding (pb-32) to allow the last card to scroll fully into view
-    <div ref={containerRef} className="work-experience-container relative pb-32">
-      {experiences.map((exp, index) => (
-        <WorkExperienceCard
-          key={index}
-          companyName={exp.companyName}
-          year={exp.year}
-          link={exp.link}
-          description={exp.description}
-          techStack={exp.techStack}
-          index={index}
-        />
-      ))}
+    <div className="relative ">
+      {/* Section title */}
+      <div className=" top-0 pt-16 pb-8 px-6 z-10 ">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-3xl md:text-4xl font-bold text-white">
+            <span className="text-teal-400">Work</span> Experience
+          </h2>
+          <p className="mt-2 text-gray-400 max-w-2xl">
+            Scroll to explore my professional journey
+          </p>
+        </div>
+      </div>
+      
+      {/* Cards container with extra padding to allow for longer scrolling */}
+      <div ref={containerRef} className="work-experience-container relative py-20 px-4">
+        {experiences.map((exp, index) => (
+          <WorkExperienceCard
+            key={index}
+            companyName={exp.companyName}
+            year={exp.year}
+            link={exp.link}
+            description={exp.description}
+            techStack={exp.techStack}
+            index={index}
+          />
+        ))}
+      </div>
     </div>
   );
 };
@@ -136,22 +160,25 @@ export const WorkExperienceSection = () => {
       companyName: "OneAdvanced  ↗",
       year: "Jan 2022- August 2023",
       link: "https://www.oneadvanced.com/",
-      description: "Developed Adastra, a .NET/C# app for NHS UK, improving patient management. Built & maintained doctor appointment APIs, streamlining scheduling & availability. Contributed to the BaRS API Gateway, enabling emergency referral services. Enhanced API performance & debugging using Postman & REST API best practices. Implemented key features: ambulance dispatch, appointment booking, referral cancellations. Collaborated with product managers & engineers, ensuring compliance & efficiency.",
-      techStack: ["C#", "HTML & CSS", ".NET", "Postman", "Angular", "Reddis", "Microsoft SQL"]
+      description: <>Developed Adastra, a .NET/C# app for NHS UK, improving patient management. Built & maintained doctor appointment APIs, streamlining scheduling & availability. Contributed to the BaRS API Gateway, enabling emergency referral services. 
+       Enhanced API performance & debugging using Postman & REST API best practices. Implemented key features: ambulance dispatch, appointment booking, referral cancellations. Collaborated with product managers & engineers, ensuring compliance & efficiency.</>,
+      techStack: ["C#",".NET MVC",".NET CORE ", "HTML & CSS", ".NET", "Postman", "Angular", "Reddis", "Microsoft SQL"]
     },
     {
       companyName: "Thoth Tech  ↗",
       year: "Aug 2024 - Feb 2025",
       link: "https://internal-systems.vercel.app/",
-      description: "Contributed to OnTrack, an educational platform used by major Australian universities, enhancing the student learning experience through backend and frontend improvements. Led the migration of legacy code from CoffeeScript to TypeScript, modernizing the platform for better performance and maintainability. Designed user-centric interfaces, improving student engagement and user journeys. Developed a customizable email notification system based on user research to optimize interactions. Implemented Docker containers, streamlining development and deployment processes.",
-      techStack: ["TypeScript", "Ruby on Rails", "HTML & CSS", "Docker", "Postgre SQL"]
+      description: <>Contributed to the development of OnTrack, an educational platform used by major Australian universities, enhancing the student learning experience through backend and frontend improvements. Led the migration of legacy code from CoffeeScript to TypeScript, modernizing the platform for better performance and maintainability. 
+      Designed user-centric interfaces, improving student engagement and user journeys. Developed a customizable email notification system based on user research to optimize interactions. Implemented Docker containers, streamlining development and deployment processes. </>,
+      techStack: ["TypeScript", "Ruby on Rails", "HTML & CSS", "Docker", "Postgre SQL", "JavaScript", "Tailwind CSS"]
     },
     {
       companyName: "Freelance Software Developer",
       year: "2022 – Present",
-      link: "",
-      description: "Designed and implemented cloud-based solutions for healthcare providers and small businesses, optimizing performance and scalability. Built microservices-based applications using React and Node.js. Deployed applications using Docker and cloud services like AWS & Azure, enabling efficient hosting and scaling. Integrated secure payment gateways with Stripe.",
-      techStack: ["React", "Node.js","Next.js", "Docker", "AWS", "Azure", "Stripe", "JavaScript", "TypeScript", "Postgre SQL", "Mongo DB", "Prisma ORM"]
+      link: "#",
+      description: <> Designed and implemented cloud-based solutions for healthcare providers and small businesses, optimizing performance and scalability. Built microservices-based applications using React and Node.js. 
+      Deployed applications using Docker and cloud services like AWS & Azure, enabling efficient hosting and scaling. Integrated secure payment gateways with Stripe.</>,
+      techStack: ["React", "Node.js","Next.js", "Docker", "AWS", "Azure", "JavaScript", "TypeScript","Stripe", "Postgre SQL", "MongoDB", "Golang", "Prisma"]
     }
   ];
 

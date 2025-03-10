@@ -1,7 +1,8 @@
 import { TypeAnimation } from "react-type-animation";
 import { Appbar } from "../components/Appbar";
 import { WorkExperienceSection } from '../components/WorkExperience';
-import { useEffect } from "react";
+// import { ExperienceProfessional } from "../components/ExperienceProfessional";
+
 
 export default function Home() {
   return (
@@ -47,7 +48,7 @@ export default function Home() {
             Outside coding, I enjoy reading, hiking, cycling, and martial arts.
           </p>
 
-          <WorkExperienceSection />
+         <WorkExperienceSection/>
         </div>
       </div>
     </div>
