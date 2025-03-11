@@ -1,38 +1,100 @@
 import { TypeAnimation } from "react-type-animation";
 import { Appbar } from "../components/Appbar";
 import { WorkExperienceSection } from '../components/WorkExperience';
-// import { ExperienceProfessional } from "../components/ExperienceProfessional";
-
+import { useEffect, useRef, useState } from "react";
 
 export default function Home() {
+  const scrollableContentRef = useRef(null);
+  const [isAvatarHovered, setIsAvatarHovered] = useState(false);
+
+  // Handle scroll events from anywhere on the page
+  useEffect(() => {
+    const handleWheel = (e) => {
+      if (scrollableContentRef.current) {
+        // Prevent default to avoid page scrolling
+        e.preventDefault();
+        
+        // Scroll the content area based on wheel delta
+        scrollableContentRef.current.scrollTop += e.deltaY;
+      }
+    };
+
+    // Add event listener to the entire window
+    window.addEventListener('wheel', handleWheel, { passive: false });
+
+    return () => {
+      // Clean up event listener
+      window.removeEventListener('wheel', handleWheel);
+    };
+  }, []);
+
   return (
     <div className="flex flex-col h-screen overflow-hidden">
       <Appbar />
 
       {/* 🛠️ Fixed: Use flex-col on mobile, grid on large screens */}
-      <div className="flex-1 flex flex-col sm:grid sm:grid-cols-2 gap-8 p-4 sm:p-8 overflow-hidden">
+      <div className="flex-1 flex flex-col sm:grid sm:grid-cols-2 gap-8 p-4 sm:p-8 overflow-y-auto">
         
         {/* 🏆 Left Section: Profile & Animated Text (No Absolute Positioning) */}
         <div className="flex flex-col items-center text-white text-center">
-          <img
-            className="w-32 h-32 sm:w-40 sm:h-40 rounded-full"
-            src="/avatar.jpg"
-            alt="Rounded avatar"
-          />
+          <div 
+            className="relative"
+            onMouseEnter={() => setIsAvatarHovered(true)}
+            onMouseLeave={() => setIsAvatarHovered(false)}
+          >
+            <div className={`transition-transform duration-300 ${isAvatarHovered ? 'scale-x-[-1]' : ''}`}>
+              <img
+                className="w-32 h-32 sm:w-40 sm:h-40 rounded-full"
+                src="/avatar.jpg"
+                alt="Rounded avatar"
+              />
+            </div>
+            {isAvatarHovered && (
+              <div className="absolute top-1/2 -right-10 transform -translate-y-1/2 text-4xl animate-wave">
+                👋
+              </div>
+            )}
+          </div>
           <h1 className="mt-4 text-2xl sm:text-3xl font-semibold">
-            Hello, I'm Amrith Jayadeep 👋
+            Hello, I'm Amrith Jayadeep
           </h1>
           <ChangingTexts />
+          <div 
+            className="group flex items-center mt-8 cursor-pointer"
+            onClick={() => {
+              if (scrollableContentRef.current) {
+                // Find the first experience card
+                const firstExperienceCard = document.getElementById('first-experience');
+                if (firstExperienceCard) {
+                  // Calculate the position and scroll to it
+                  const cardPosition = firstExperienceCard.offsetTop;
+                  scrollableContentRef.current.scrollTo({
+                    top: cardPosition - 100, // Offset to position it nicely in view
+                    behavior: 'smooth'
+                  });
+                }
+              }
+            }}
+          > 
+            <span className="nav-indicator h-px w-8 bg-slate-600 transition-all group-hover:w-16 group-hover:bg-slate-200 group-focus-visible:w-16 group-focus-visible:bg-slate-200 motion-reduce:transition-none"></span>
+            <div className="text-slate-500 hover:text-teal-400 ml-4 font-bold tracking-widest">EXPERIENCE</div>
+          </div>
         </div>
 
+      
+
         {/* 📜 Right Section: About + Work Experience */}
-        <div id="scrollable-content" className="text-slate-400 text-lg overflow-y-auto">
+        <div 
+          id="scrollable-content" 
+          ref={scrollableContentRef}
+          className="text-slate-400 text-lg overflow-y-auto"
+        >
           <p className="mb-6">
          I'm a software engineer with a passion for crafting efficient, 
           high-performance web applications featuring eye-catching interfaces. 
           I leverage the latest tech stacks to design scalable and robust solutions that stand out. 
           Currently pursuing  Master's in Information Technology with a specialization in Cloud Technology and Networking at Deakin University, 
-          I’m continually exploring cutting-edge methods to optimize web applications using cloud innovations.
+          I'm continually exploring cutting-edge methods to optimize web applications using cloud innovations.
           </p>
           <p className="mb-10"> My experience spans freelancing for local businesses, where I've developed tailored websites, and building my own comprehensive e-commerce platform, 
             <a href="https://mriid.com" className="text-bold text-white"> MRIID</a>, where I handle everything from backend 
@@ -40,8 +102,6 @@ export default function Home() {
             <a href="https://www.oneadvanced.com/" className="text-bold text-white"> OneAdvanced</a>, contributing to 
             large-scale enterprise applications.
           </p>
-
-          
 
           <p className="mb-10">
             Passionate about problem-solving, system design, and building high-performance applications. 

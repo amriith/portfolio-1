@@ -5,12 +5,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 // Register the ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-export const WorkExperienceCard = ({ companyName, year, description, techStack, link, index }) => {
+export const WorkExperienceCard = ({ companyName, year, description, techStack, link, index, id  }) => {
   const cardRef = useRef(null);
   
   return (
     <div 
       ref={cardRef}
+      id={id}
       className="work-experience-card w-full max-w-3xl mx-auto p-6 bg-gray-900 rounded-xl shadow-md border border-gray-800 mb-32 opacity-0"
       data-index={index}
     >
@@ -111,7 +112,7 @@ export const AnimatedWorkExperience = ({ experiences }) => {
               ease: "power2.out"
             });
           },
-          // markers: true, // Enable markers for debugging if needed
+     
         });
       }
     });
@@ -136,8 +137,8 @@ export const AnimatedWorkExperience = ({ experiences }) => {
         </div>
       </div>
       
-      {/* Cards container with extra padding to allow for longer scrolling */}
-      <div ref={containerRef} className="work-experience-container relative py-20 px-4">
+  
+      <div ref={containerRef} className="work-experience-container relative py-15 px-4">
         {experiences.map((exp, index) => (
           <WorkExperienceCard
             key={index}
@@ -147,6 +148,7 @@ export const AnimatedWorkExperience = ({ experiences }) => {
             description={exp.description}
             techStack={exp.techStack}
             index={index}
+            id={index === 0 ? "first-experience" : undefined}
           />
         ))}
       </div>
