@@ -408,7 +408,7 @@ export default function ApologeticBow() {
           <motion.div 
             className="h-full bg-gradient-to-r from-red-600 to-red-400"
             initial={{ width: "0%" }}
-            animate={{ width: "48%" }}
+            animate={{ width: "45%" }}
             transition={{ delay: 2, duration: 2, ease: "easeOut" }}
           />
         </motion.div>
