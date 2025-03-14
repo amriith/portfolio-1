@@ -5,6 +5,7 @@ import { Projects } from "../components/Projects";
 import { useState } from "react";
 import { Footer } from "../components/Footer";
 import { Socials } from "../components/Socials";
+import "../styles/animations.css"; // Import the animations CSS file
 
 export default function Home() {
   const [isAvatarHovered, setIsAvatarHovered] = useState(false);
@@ -12,9 +13,9 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center min-h-screen">
       <Appbar />
+      <Socials/>
 
-
-      {/* Main content area */}
+      
       <main className="flex-1">
         {/* Use flex-col on mobile, grid on larger screens */}
         <div className="flex flex-col sm:grid sm:grid-cols-2 gap-8 p-4 sm:p-8">
@@ -26,7 +27,7 @@ export default function Home() {
               onMouseEnter={() => setIsAvatarHovered(true)}
               onMouseLeave={() => setIsAvatarHovered(false)}
             >
-              <div className={`transition-transform duration-300 ${isAvatarHovered ? 'scale-x-[-1]' : ''}`}>
+              <div className={isAvatarHovered ? 'avatar-wave' : ''}>
                 <img
                   className="w-32 h-32 sm:w-40 sm:h-40 rounded-full"
                   src="/avatar.jpg"
@@ -34,7 +35,7 @@ export default function Home() {
                 />
               </div>
               {isAvatarHovered && (
-                <div className="absolute top-1/2 -right-10 transform -translate-y-1/2 text-4xl animate-wave">
+                <div className="absolute top-1/2 -right-10 transform -translate-y-1/2 text-4xl hand-wave">
                   👋
                 </div>
               )}
