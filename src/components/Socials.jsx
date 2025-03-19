@@ -64,7 +64,7 @@ export const LinkedinIcon = () => {
 export const CodepenIcon =() => {
     return (
         <div>
-            <a href="https://codepen.io/amrith" target="_blank" rel="noopener noreferrer">
+            <a href="https://codepen.io/amriith" target="_blank" rel="noopener noreferrer">
             <img className="h-8 w-8" src={codepen} alt="Codepen Logo" />
              </a>
          </div>

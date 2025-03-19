@@ -413,7 +413,7 @@ export default function ApologeticBow() {
           />
         </motion.div>
       </motion.div>
-
+<AnimatedNaruto/>
     </div>
   );
 }
