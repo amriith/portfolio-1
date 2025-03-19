@@ -93,11 +93,38 @@ const AnimatedNaruto = () => {
       {/* Eye Button */}
       <button 
         onClick={handleEyeClick}
-        className="fixed bottom-10 right-10 w-20 h-12 bg-red-700 rounded-full flex items-center justify-center cursor-pointer hover:bg-red-800 transition-colors z-50"
+        className="fixed bottom-10 right-10 w-20 h-20 rounded-full flex items-center justify-center cursor-pointer hover:scale-110 transition-transform z-50 overflow-hidden"
+        style={{ 
+          boxShadow: '0 0 10px rgba(255, 0, 0, 0.7), 0 0 20px rgba(0, 0, 0, 0.5)',
+        }}
       >
-        <div className="w-12 h-8 bg-white rounded-full flex items-center justify-center">
-          <div className="w-6 h-6 bg-black rounded-full">
-            <div className="w-2 h-2 bg-red-600 rounded-full ml-3 mt-1"></div>
+        {/* Main red eye background */}
+        <div className="w-full h-full bg-red-700 rounded-full flex items-center justify-center relative">
+          {/* Inner circle */}
+          <div className="w-3/4 h-3/4 rounded-full border-2 border-black opacity-30"></div>
+          
+          {/* Center black dot */}
+          <div className="absolute w-1/4 h-1/4 bg-black rounded-full"></div>
+          
+          {/* Three tomoe marks */}
+          <div className="absolute w-full h-full">
+            {/* First tomoe - top */}
+            <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-4 h-7">
+              <div className="w-full h-4 bg-black rounded-full"></div>
+              <div className="w-2 h-3 bg-black absolute top-3 left-1 rounded-full transform rotate-45"></div>
+            </div>
+            
+            {/* Second tomoe - bottom right */}
+            <div className="absolute bottom-3 right-3 transform rotate-120 w-4 h-7">
+              <div className="w-full h-4 bg-black rounded-full"></div>
+              <div className="w-2 h-3 bg-black absolute top-3 left-1 rounded-full transform rotate-45"></div>
+            </div>
+            
+            {/* Third tomoe - bottom left */}
+            <div className="absolute bottom-3 left-3 transform -rotate-120 w-4 h-7">
+              <div className="w-full h-4 bg-black rounded-full"></div>
+              <div className="w-2 h-3 bg-black absolute top-3 left-1 rounded-full transform rotate-45"></div>
+            </div>
           </div>
         </div>
       </button>
