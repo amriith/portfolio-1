@@ -150,7 +150,7 @@ export default function ApologeticBow() {
               ease: "easeInOut"
             }}
           >
-            ✦                                                                                                        
+            ✦                                                                                     
           </motion.div>
         ))}
       </div>
@@ -395,7 +395,7 @@ export default function ApologeticBow() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1, duration: 1 }}
         >
-          Work in progress. Expected to finish by 18th March 2025 4:00 PM
+          Work in progress. Expected to finish by 31stMarch 2025 4:00 PM
         </motion.p>
         
         {/* Progress indicator */}
