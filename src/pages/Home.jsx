@@ -102,7 +102,7 @@ export function ChangingTexts() {
           "I'm a Geek",
           2000,
           "I'm a Software Engineer",
-          2000,
+          2100,
         ]}
         wrapper="span"
         cursor={true}
