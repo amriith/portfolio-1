@@ -100,7 +100,7 @@ export function ChangingTexts() {
           "I'm a Human Being",
           2000,
           "I'm a Geek",
-          2000,
+          2100,
           "I'm a Software Engineer",
           2100,
         ]}
