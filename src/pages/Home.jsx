@@ -77,7 +77,7 @@ export default function Home() {
 
             <p className="mb-10">
               Passionate about problem-solving, system design, and building high-performance applications. 
-              Outside coding, I enjoy reading, hiking, cycling, and martial arts.
+              Outside coding, hiking, cycling, and martial arts.
             </p>
 
             <WorkExperienceSection/>
