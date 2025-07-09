@@ -99,7 +99,7 @@ export function ChangingTexts() {
         sequence={[
           "I'm a Human Being",
           2000,
-          "I'm a Geek",
+          "I'm a DevOps Engineer",
           2100,
           "I'm a Software Engineer",
           2100,
