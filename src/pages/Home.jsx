@@ -61,7 +61,7 @@ export default function Home() {
           {/* Right Section: About + Work Experience */}
           <div className="text-slate-400 text-lg">
             <p className="mb-6">
-              I'm a software engineer with a passion for crafting efficient, 
+              I'm a Devops Engineer with a passion for crafting efficient, 
               high-performance web applications featuring eye-catching interfaces. 
               I leverage the latest tech stacks to design scalable and robust solutions that stand out. 
               Currently pursuing Master's in Information Technology with a specialization in Cloud Technology and Networking at Deakin University, 
