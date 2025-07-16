@@ -403,7 +403,7 @@ export default function ApologeticBow() {
           className="mt-6 w-130 h-2 bg-gray-800 rounded-full overflow-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
+          transition={{ delay: 2, duration: 1 }}
         >
           <motion.div 
             className="h-full bg-gradient-to-r from-red-600 to-red-400"
