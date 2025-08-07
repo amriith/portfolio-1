@@ -27,7 +27,7 @@ export default function Home() {
               onMouseEnter={() => setIsAvatarHovered(true)}
               onMouseLeave={() => setIsAvatarHovered(false)}
             >
-              <div className={isAvatarHovered ? 'avatar-wave' : ''}>
+              <div>
                 <img
                   className="w-32 h-32 sm:w-40 sm:h-40 rounded-full"
                   src="/avatar.jpg"
