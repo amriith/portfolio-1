@@ -159,12 +159,13 @@ export const AnimatedWorkExperience = ({ experiences }) => {
 export const WorkExperienceSection = () => {
   const experienceData = [
     {
-      companyName: "OneAdvanced  ↗",
-      year: "Jan 2022- August 2023",
+      companyName: "OneAdvanced ↗",
+      year: "Dec 2021 – July 2023",
       link: "https://www.oneadvanced.com/",
-      description: <>Developed Adastra, a .NET/C# app for NHS UK, improving patient management. Built & maintained doctor appointment APIs, streamlining scheduling & availability. Contributed to the BaRS API Gateway, enabling emergency referral services. 
-       Enhanced API performance & debugging using Postman & REST API best practices. Implemented key features: ambulance dispatch, appointment booking, referral cancellations. Collaborated with product managers & engineers, ensuring compliance & efficiency.</>,
-      techStack: ["C#",".NET MVC",".NET CORE ", "HTML & CSS", ".NET", "Postman", "Angular", "Reddis", "Microsoft SQL"]
+      description: <>Contributed to <b>Adastra</b>, the NHS UK patient management platform, by redesigning .NET/C# components and optimizing backend services for performance and reliability. 
+      Designed <b>AWS scaling strategies</b> (Auto Scaling Groups, ELB) to ensure high availability during peak loads. 
+      Enhanced <b>system reliability</b> with proactive monitoring (CloudWatch, X-Ray, alarms) and streamlined CI/CD workflows using CodePipeline & CodeDeploy, achieving 30% faster deployments.</>,
+      techStack: ["C#",".NET Core",".NET MVC","Angular","Redis","SQL Server","AWS"," EC2", "ELB", "Auto Scaling","Postman"]
     },
     {
       companyName: "Thoth Tech  ↗",

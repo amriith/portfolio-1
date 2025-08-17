@@ -10,10 +10,19 @@
   75% { transform: rotate(21deg); }
 }
 
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
 .avatar-wave {
   animation: wave-motion 0.8s ease-in-out infinite;
 }
 
 .hand-wave {
   animation: hand-wave 0.8s ease-in-out infinite;
+}
+
+.cursor-blink {
+  animation: blink 1s infinite;
 }
