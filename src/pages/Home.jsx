@@ -89,6 +89,8 @@ export default function Home() {
             (CodePipeline, GitHub Actions, Jenkins). 
             I’m passionate about platform engineering and building internal developer platforms (IDPs) 
             that simplify delivery and boost reliability.  
+            Today I'm a Platform Engineer at <a href="https://www.agl.com.au/" className="text-bold text-white">AGL</a>,
+            running hybrid on-prem and Azure infrastructure for critical energy generation systems.
             Previously, I contributed to <a href="https://www.oneadvanced.com/" className="text-bold text-white">OneAdvanced</a>, 
             optimizing NHS UK’s Adastra system, and built <a href="https://mriid.com" className="text-bold text-white">MRIID</a>, 
             my own full-stack e-commerce platform.

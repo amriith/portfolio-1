@@ -159,6 +159,16 @@ export const AnimatedWorkExperience = ({ experiences }) => {
 export const WorkExperienceSection = () => {
   const experienceData = [
     {
+      companyName: "AGL · Platform Engineer ↗",
+      year: "October 2025 - Present",
+      link: "https://www.agl.com.au/",
+      description: <>Keeping the systems behind <b>AGL's energy generation</b> running across on-prem and <b>Azure</b>.
+      I look after the infrastructure lifecycle from provisioning to retirement: a <b>VMware</b> estate managed with IaC-aligned configuration, patching and governance,
+      plus Azure security controls (RBAC, vulnerability remediation, identity) that give teams safe self-service access.
+      I also build secure data pipelines from industrial systems into the cloud for analytics, and handle 2nd/3rd line escalations, tracing complex cloud and network faults to their root cause and working with external vendors on changes.</>,
+      techStack: ["Azure", "VMware", "Infrastructure as Code", "Hybrid Cloud", "RBAC", "DevSecOps", "Networking", "Data Pipelines"]
+    },
+    {
       companyName: "OneAdvanced ↗",
       year: "Dec 2021 – July 2023",
       link: "https://www.oneadvanced.com/",

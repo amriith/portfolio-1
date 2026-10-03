@@ -3,6 +3,23 @@ import github from "../assets/github.svg"
 export const Projects = () => {
   const projects = [
     {
+      title: "X — Multi-Camera CCTV Monitoring",
+      description: "A multi-tenant video monitoring and alerting platform that turns phones into CCTV cameras. Frames stream over WebSockets through a Node.js gateway into a Go orchestrator and Kafka, where a motion gate filters out idle footage before YOLO object detection runs on Triton Inference Server. Flagged clips are stored and passed to an LLM worker that describes the event and scores how dangerous it is. Currently under active development.",
+      technologies: ["Go", "Kafka", "gRPC", "Triton", "YOLO", "OpenCV", "Redis", "React Native", "Node.js", "FastAPI", "MinIO / S3"],
+      link: "",
+      github: "https://github.com/amriith/X",
+      image: "",
+      pipeline: ["Phone camera", "Node.js gateway", "Go + Kafka", "Motion gate", "YOLO on Triton", "LLM danger score"],
+      hiddenFeatures: [
+        "React Native client tags every frame with tenant, camera and sequence number to detect dropped frames",
+        "JWT auth and per-connection rate limiting at the WebSocket gateway",
+        "Kafka partitioned by camera so each camera is processed in order by a single consumer",
+        "Cheap motion gate (frame diff + MOG2 background subtraction) skips idle frames before inference",
+        "Triton dynamic batching, running ONNX on CPU today with a TensorRT GPU path planned via config only",
+        "Detections decoupled from the LLM worker through a second Kafka topic so slow analysis never blocks inference"
+      ]
+    },
+    {
       title: "MRIID E-commerce Platform",
       description: "A highly scalable, cloud-native e-commerce platform built with modern microservices architecture, featuring advanced infrastructure optimization, Kubernetes orchestration, and stateful application management. The platform implements modern design principles with a focus on performance, scalability, and infrastructure efficiency.",
       technologies: ["React", "Node.js", "MongoDB", "AWS", "Docker", "Kubernetes",  "Nginx", "Prometheus", "Grafana", "Helm"],
@@ -140,6 +157,7 @@ export const Projects = () => {
 
                     {/* Links */}
                     <div className="flex gap-3 group-hover:gap-4 transition-all duration-500">
+                      {project.link && (
                       <a
                         href={project.link}
                         target="_blank"
@@ -148,6 +166,7 @@ export const Projects = () => {
                       >
                         Live Demo
                       </a>
+                      )}
                       <a
                         href={project.github}
                         target="_blank"
@@ -160,7 +179,26 @@ export const Projects = () => {
                   </div>
                 </div>
 
-                {/* Project Image Box - Right side with enhanced hover */}
+                {/* Project visual - Right side: image if provided, otherwise a pipeline diagram */}
+                {!project.image ? (
+                  <div className="flex-1 order-1 lg:order-2 w-full">
+                    <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-6 transition-all duration-500 group-hover:bg-white/20 group-hover:border-white/40 group-hover:shadow-2xl transform group-hover:scale-105 group-hover:-translate-y-2">
+                      <p className="text-xs font-mono text-teal-400 mb-4">$ frame pipeline</p>
+                      <ol className="flex flex-col items-stretch">
+                        {project.pipeline?.map((step, i) => (
+                          <li key={i} className="flex flex-col items-center">
+                            <span className="w-full text-center px-4 py-2 rounded-lg bg-slate-800/60 border border-slate-600/50 text-slate-200 text-sm font-mono">
+                              {step}
+                            </span>
+                            {i < project.pipeline.length - 1 && (
+                              <span className="text-teal-400 leading-none py-1" aria-hidden="true">↓</span>
+                            )}
+                          </li>
+                        ))}
+                      </ol>
+                    </div>
+                  </div>
+                ) : (
                 <div className="flex-1 order-1 lg:order-2">
                   <div className="group/image relative">
                     <div className="bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl transition-all duration-500 group-hover:bg-white/20 group-hover:border-white/40 group-hover:shadow-2xl transform group-hover:scale-105 group-hover:-translate-y-2 overflow-hidden">
@@ -196,6 +234,7 @@ export const Projects = () => {
                     </div>
                   </div>
                 </div>
+                )}
               </div>
             </div>
           ))}
